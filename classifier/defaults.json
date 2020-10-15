@@ -1,0 +1,69 @@
+{
+	"GMMHMM": {
+		"parameters": {
+			"n_components": 3,
+			"n_mix": 2,
+			"covariance_type": "diag",
+			"init_params": "stwmc"
+		},
+		"train": {
+			"weight_rand_init": 0.1,
+			"mean_rand_init": 0.1,
+			"covar_rand_init": 0.1,
+			"n_iter": 4,
+			"verbose": true,
+			"tol": 0,
+			"rescale_samples": true
+		}
+	},
+	"LSTM": {
+		"parameters": {
+			"num_layers": 2,
+			"dropout": 0,
+			"hidden_dim": 20,
+			"binary": true
+		},
+		"train": {
+			"learning_rate": 0.001,
+			"batch_size": 256,
+			"n_iter": 20,
+			"verbose": true,
+			"force_cpu": false,
+			"rescale_samples": true
+		}
+	},
+	"GenHMM": {
+		"parameters": {
+			"n_states": 3,
+			"n_prob_components": 2,
+			"em_skip": 4,
+			"device": "cpu",
+			"lr": 0.004,
+			"net_H": 24,
+			"net_D": null,
+			"net_nchain": 4,
+			"p_drop": 0,
+			"mask_type": "cross",
+			"startprob_type": "first",
+			"transmat_type": "triangular"
+		},
+		"train": {
+			"batch_size": 96,
+			"n_iter": 4,
+			"force_cpu": false
+		}
+	},
+	"GMM": {
+		"parameters": {
+			"n_components": 2,
+			"n_init": 4,
+			"max_iter": 100,
+			"tol": 0,
+			"covariance_type": "diag"
+		},
+		"train": {
+			"verbose": true,
+			"rescale_samples": false
+		}
+	}
+}

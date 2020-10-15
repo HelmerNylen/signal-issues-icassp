@@ -1,0 +1,209 @@
+[{
+	"id": "add-white",
+	"name": "White Noise",
+	"info": {
+		"description": "A description of the problem.",
+		"cause": "An explanation of what causes the problem.",
+		"solution": "How to solve the problem."
+	},
+	"degradations": [
+		{
+			"name": "addNoise",
+			"noiseColor": "white",
+			"snrRatio": 40,
+			"normalizeOutputAudio": false
+		}
+	],
+	"classifiers": [
+		{
+			"type": "LSTM",
+			"parameters": "default",
+			"train": "default",
+			"feature": "mfcc_kaldi",
+			"feature_settings": {},
+			"vad": {
+				"frame_length": 20,
+				"aggressiveness": 2,
+				"inverse": true,
+				"min_length": 100,
+				"smooth_n": 5
+			}
+		}
+	]
+}, {
+	"id": "add-aircon",
+	"name": "Air-conditioning",
+	"info": {
+		"description": "A description of the problem.",
+		"cause": "An explanation of what causes the problem.",
+		"solution": "How to solve the problem."
+	},
+	"degradations": [
+		{
+			"name": "addSound",
+			"addSoundFile": {"randomNoiseFile": "aircon"},
+			"addSoundFileStart": "random",
+			"snrRatio": 40,
+			"normalizeOutputAudio": false
+		}
+	],
+	"classifiers": [
+		{
+			"type": "LSTM",
+			"parameters": "default",
+			"train": "default",
+			"feature": "mfcc_kaldi",
+			"feature_settings": {},
+			"vad": {
+				"frame_length": 20,
+				"aggressiveness": 2,
+				"inverse": true,
+				"min_length": 100,
+				"smooth_n": 5
+			}
+		}
+	]
+}, {
+	"id": "add-hum",
+	"name": "Electric Hum",
+	"info": {
+		"description": "A description of the problem.",
+		"cause": "An explanation of what causes the problem.",
+		"solution": "How to solve the problem."
+	},
+	"degradations": [
+		{
+			"name": "addSound",
+			"addSoundFile": {"randomNoiseFile": "electric-hum"},
+			"addSoundFileStart": "random",
+			"snrRatio": 40,
+			"normalizeOutputAudio": false
+		}
+	],
+	"classifiers": [
+		{
+			"type": "LSTM",
+			"parameters": "default",
+			"train": "default",
+			"feature": "mfcc_kaldi",
+			"feature_settings": {},
+			"vad": {
+				"frame_length": 20,
+				"aggressiveness": 2,
+				"inverse": true,
+				"min_length": 100,
+				"smooth_n": 5
+			}
+		}
+	]
+}, {
+	"id": "clipping-hard",
+	"name": "Clipping (Hard)",
+	"info": {
+		"description": "A description of the problem.",
+		"cause": "An explanation of what causes the problem.",
+		"solution": "How to solve the problem."
+	},
+	"degradations": [
+		{
+			"name": "applyClippingAlternative",
+			"percentOfSamples": {"randomRange": [5, 20]}
+		}, {
+			"name": "normalize",
+			"maxAmplitude": {"randomRange": [0.5, 0.999]}
+		}
+	],
+	"classifiers": [
+		{
+			"type": "LSTM",
+			"parameters": "default",
+			"train": "default",
+			"feature": "mfcc_kaldi",
+			"feature_settings": {}
+		}
+	]
+}, {
+	"id": "clipping-soft",
+	"name": "Clipping (Soft)",
+	"info": {
+		"description": "A description of the problem.",
+		"cause": "An explanation of what causes the problem.",
+		"solution": "How to solve the problem."
+	},
+	"degradations": [
+		{
+			"name": "applySoftClipping",
+			"percentOfSamples": {"randomRange": [5, 20]}
+		}, {
+			"name": "normalize",
+			"maxAmplitude": {"randomRange": [0.5, 0.999]}
+		}
+	],
+	"classifiers": [
+		{
+			"type": "LSTM",
+			"parameters": "default",
+			"train": "default",
+			"feature": "mfcc_kaldi",
+			"feature_settings": {}
+		}
+	]
+}, {
+	"id": "mute",
+	"name": "Random Muting",
+	"info": {
+		"description": "A description of the problem.",
+		"cause": "An explanation of what causes the problem.",
+		"solution": "How to solve the problem."
+	},
+	"degradations": [
+		{
+			"name": "applyMute",
+			"mutePercent": 20,
+			"muteLengthMin": 0.1,
+			"muteLengthMax": 0.75,
+			"mutePauseMin": 0.05
+		}
+	],
+	"classifiers": [
+		{
+			"type": "LSTM",
+			"parameters": "default",
+			"train": "default",
+			"feature": "mfcc_kaldi",
+			"feature_settings": {
+				"num-ceps": 3
+			}
+		}
+	]
+}, {
+	"id": "add-infra",
+	"name": "Infrasound Noise",
+	"info": {
+		"description": "A description of the problem.",
+		"cause": "An explanation of what causes the problem.",
+		"solution": "How to solve the problem."
+	},
+	"degradations": [
+		{
+			"name": "addInfrasound",
+			"sinusoidFreqs": [{"randomRange": [2, 12]}, {"randomRange": [8, 18]}],
+			"snrRatio": 20,
+			"normalizeOutputAudio": false
+		}
+	],
+	"classifiers": [
+		{
+			"type": "LSTM",
+			"parameters": "default",
+			"train": "default",
+			"feature": "mfcc_kaldi",
+			"feature_settings": {
+				"low-freq": 2,
+				"high-freq": 100,
+				"num-mel-bins": 3,
+				"num-ceps": 2
+			}
+		}
+	]
+}]
