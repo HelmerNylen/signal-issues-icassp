@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
 			realizations_avg_cts, realizations_avg_stats = [], []
 			for ds_name in ds_names:
-				trials_avg_cts, trials_avg_stats = repeat_trial(n_trials, silent=False)
+				trials_avg_cts, trials_avg_stats = repeat_trial(n_trials, ds_name, silent=False)
 				realizations_avg_cts.append(trials_avg_cts)
 				realizations_avg_stats.append(trials_avg_stats)
 
